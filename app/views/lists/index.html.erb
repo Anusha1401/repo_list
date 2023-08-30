@@ -52,9 +52,9 @@
       </div>
       <div style="height: 500px;overflow: auto;">
         <% @lists.each do |list| %>
-          <span class="title"> <%= list["name"] %> </span>
-          <span class="title"> <%= link_to list["html_url"], list["html_url"], target: '_blank' %> </span>
-          <span class="title"> <%= list["topics"].join(', ') %> </span>
+          <span class="title"> <%= list['name'] %> </span>
+          <span class="title"> <%= link_to list['html_url'], list['html_url'], target: '_blank' %> </span>
+          <span class="title"> <%= list['topics'].join(', ') %> </span>
         <% end %>
       </div>
       <div class="paginate"><%= will_paginate @lists%></div>

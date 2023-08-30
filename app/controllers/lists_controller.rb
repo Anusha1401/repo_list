@@ -1,3 +1,4 @@
+# Controller used to get all public repositories based of searched key
 class ListsController < ApplicationController
   before_action :initialize_page_params, only: :search
 

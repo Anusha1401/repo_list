@@ -1,5 +1,10 @@
+# Service used to get array of public git repositories from GitHub
+# Input: search key
+# Output: Array of public repositories
 class RepoService
-  GIT_BASE_URL = 'https://api.github.com/search/repositories'.freeze
+  require 'uri'
+  require 'net/https'
+
   def initialize(search_key)
     @search_key = search_key
   end
