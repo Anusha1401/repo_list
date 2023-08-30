@@ -1,5 +1,4 @@
 class RepoService
-  include NethttpHelper
   GIT_BASE_URL = 'https://api.github.com/search/repositories'.freeze
   def initialize(search_key)
     @search_key = search_key

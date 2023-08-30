@@ -1,8 +1,7 @@
 class ListsController < ApplicationController
   before_action :initialize_page_params, only: :search
-  def index
-    @lists = nil
-  end
+
+  def index; end
 
   def search
     search_term = params[:query]
