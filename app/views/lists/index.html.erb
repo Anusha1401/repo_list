@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title> git repo </title>
+    <style>
+    .search_input {
+      height: 20px;
+      padding-left: 5px;
+    }
+    .search_button {
+      border-radius: 14px;
+      border: 1px solid black;
+      background-color: white;
+      padding: 4px 9px;
+      margin-left: 9px;
+    }
+    .title {
+      display: inline-block;
+      width: 30%;
+      height: 60px;
+      overflow-x: auto;
+      border-bottom: 1px solid brown;
+      margin-top: 10px;
+      background-color: linen;
+      padding: 12px 8px;
+    }
+    .heading {
+      font-weight: bolder;
+      text-align:  center;
+    }
+    .paginate {
+      margin: 20px 40%;
+      background-color: white;
+      align-items: center;
+      display: inline-block;
+      padding: 15px;
+      border-radius: 20px;
+    }
+    </style>
+  </head>
+  <body style="background-color: antiquewhite;">
+    <h1> Search for a Public Repo in GitHub </h1>
+    <%= form_tag search_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "search_input" %>
+      <%= submit_tag value="Search", class: "search_button"%>
+    <% end %>
+    <%if @lists.present? %>
+      <div>
+        <span class="title heading"> Title </span>
+        <span class="title heading"> URL </span>
+        <span class="title heading"> Topics </span>
+      </div>
+      <div style="height: 500px;overflow: auto;">
+        <% @lists.each do |list| %>
+          <span class="title"> <%= list["name"] %> </span>
+          <span class="title"> <%= link_to list["html_url"], list["html_url"], target: '_blank' %> </span>
+          <span class="title"> <%= list["topics"].join(', ') %> </span>
+        <% end %>
+      </div>
+      <div class="paginate"><%= will_paginate @lists%></div>
+    <% elsif @lists.nil? %>
+      <h4> search for a public repository </h4>
+    <% else %>
+      <h4> No results found </h4>
+    <% end %>
+  </body>
+</html>
